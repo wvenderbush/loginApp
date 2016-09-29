@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<title> {{ title }} </title>
+	<head>
+
+	<body>
+		 	{% if flag == "success" %}
+  				Success!
+			{% endif %}
+			{% if flag == "fail" %}
+				Incorrect username and password!
+				<br>
+				<form action="/" method="GET">
+				  <input type="submit" value="Try again?">
+				</form>
+			{% endif %}
+
+
+	</body>
+
+</html>
+
