@@ -7,17 +7,18 @@
 	<head>
 
 	<body>
-		<form action="/authenticate/" method="POST">
-		  Enter your username and password:
+		<form action="/regauth/" method="POST">
+		  <h2> {{ message }} </h2>
+		  Create a new account! 
 		  <br>
 		  <input type="text" name="user" value="">
 		  <br>
 		  <input type="password" name="password" value="">
 		  <br>
-		  <input type="submit" value="Login">
+		  <input type="submit" value="Register">
 		</form>
-		<form action="/registration/">
-		<input type="submit" value="Register">
+		<form action="/">
+		<input type="submit" value="Back to Login">
 		</form>
 
 
