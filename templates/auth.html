@@ -8,7 +8,10 @@
 
 	<body>
 		 	{% if flag == "success" %}
-  				Success!
+  				You successfully logged in as {{ username }}!
+  				<form action="/" method="POST">
+  					<input type="submit" name="logval" value="Logout">
+  				</form>
 			{% endif %}
 			{% if flag == "fail" %}
 				Incorrect username and password!
