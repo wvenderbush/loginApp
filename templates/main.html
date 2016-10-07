@@ -7,6 +7,17 @@
 	<head>
 
 	<body>
+		{% if flag == "login" %}
+			<center>
+  				{{ message }}
+  				<br>
+  				<br>
+  				<form action="/" method="POST">
+  					<input type="submit" name="logval" value="Logout">
+  				</form>
+  			</center>
+		{% endif %}
+		{% if flag != "login" %}
 		<form action="/authenticate/" method="POST">
 		  {{ message }}
 		  <br>
@@ -19,6 +30,7 @@
 		<form action="/registration/">
 		<input type="submit" value="Register">
 		</form>
+		{% endif %}
 
 
 	</body>

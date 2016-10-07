@@ -1,5 +1,7 @@
 #!/usr/bin/python
 #Winston Venderbush
+#Note: This is very dirty. I really should clean it up... but I'm still experimenting with all that Flask has to offer.
+
 import random
 import csv
 import hashlib
@@ -18,8 +20,12 @@ def root():
 		print session
 		user = session["username"]
 		session.pop(hashlib.sha256(user).hexdigest())
-		return render_template('main.html', title = "Login", message = "You have been logged out!")
-	return render_template('main.html', title = "Login", message = "Enter your username and password:")
+		session.pop("username")
+		return render_template('main.html', title = "Login", message = "You have been logged out!", flag = "logout")
+	if ("username" in session):
+		print session
+		return render_template('main.html', title = "Landing", message = "Welcome, " + session["username"], flag = "login")
+	return render_template('main.html', title = "Login", message = "Enter your username and password:", flag = "logout")
 
 @app.route("/registration/", methods=["POST", "GET"])
 def register():
@@ -34,8 +40,8 @@ def regauth():
 		reader = csv.reader(f)
 		if os.path.getsize('data/accounts.csv') > 0:
 			for row in reader:
-				if (user == row[0]):
-					return render_template('register.html', message = 'Username already registered!' , title = 'Register')
+				if (user == row[0] or form['user'] == "" or form['password'] == ""):
+					return render_template('register.html', message = 'Cannot register that username and password!' , title = 'Register')
 	f.close()
 
 	fd = open('data/accounts.csv','a')

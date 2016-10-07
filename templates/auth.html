@@ -10,7 +10,11 @@
 		 	{% if flag == "success" %}
   				You successfully logged in as {{ username }}!
   				<form action="/" method="POST">
+  					<input type="submit" value="Home">
+  					<br>
+  					<br>
   					<input type="submit" name="logval" value="Logout">
+
   				</form>
 			{% endif %}
 			{% if flag == "fail" %}
