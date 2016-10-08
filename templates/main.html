@@ -4,9 +4,12 @@
 
 	<head>
 		<title> {{ title }} </title>
-	<head>
+	</head>
 
 	<body>
+		<center>
+		<h1> Winston's Login Portal </h1>
+		</center>
 		{% if flag == "login" %}
 			<center>
   				{{ message }}
@@ -18,18 +21,22 @@
   			</center>
 		{% endif %}
 		{% if flag != "login" %}
+		<center>
 		<form action="/authenticate/" method="POST">
-		  {{ message }}
-		  <br>
-		  <input type="text" name="user" value="">
-		  <br>
-		  <input type="password" name="password" value="">
-		  <br>
-		  <input type="submit" value="Login">
+			{{ message }}
+			<br>
+			<br>
+			<input type="text" name="user" value="">
+			<br>
+			<input type="password" name="password" value="">
+			<br>
+			<input type="submit" value="Login">
 		</form>
+		<br>
 		<form action="/registration/">
 		<input type="submit" value="Register">
 		</form>
+		</center>
 		{% endif %}
 
 

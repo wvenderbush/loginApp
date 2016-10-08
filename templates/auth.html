@@ -4,11 +4,14 @@
 
 	<head>
 		<title> {{ title }} </title>
-	<head>
+	</head>
 
 	<body>
 		 	{% if flag == "success" %}
-  				You successfully logged in as {{ username }}!
+		 	<center>
+  				You successfully logged in as <b>{{ username }}</b>!
+  				<br>
+  				<br>
   				<form action="/" method="POST">
   					<input type="submit" value="Home">
   					<br>
@@ -16,13 +19,18 @@
   					<input type="submit" name="logval" value="Logout">
 
   				</form>
+  			</center>
 			{% endif %}
 			{% if flag == "fail" %}
+			</body>
+			<center>
 				Incorrect username and password!
+				<br>
 				<br>
 				<form action="/" method="GET">
 				  <input type="submit" value="Try again?">
 				</form>
+			</center>
 			{% endif %}
 
 

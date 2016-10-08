@@ -4,12 +4,15 @@
 
 	<head>
 		<title> {{ title }} </title>
-	<head>
+	</head>
 
 	<body>
+		<center>
+		<h1> Winston's Login Portal </h1>
 		<form action="/regauth/" method="POST">
 		  <h2> {{ message }} </h2>
 		  Create a new account! 
+		  <br>
 		  <br>
 		  <input type="text" name="user" value="">
 		  <br>
@@ -17,9 +20,11 @@
 		  <br>
 		  <input type="submit" value="Register">
 		</form>
+		<br>
 		<form action="/">
 		<input type="submit" value="Back to Login">
 		</form>
+		</center>
 
 
 	</body>

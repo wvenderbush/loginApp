@@ -12,7 +12,6 @@ from flask import Flask, render_template, request, session, url_for
 app = Flask(__name__)
 app.secret_key = '\xe9$=P\nr\xbc\xcd\xa5\xe5I\xba\x86\xeb\x81L+%,\xcb\xcb\xf46d\xf9\x99\x1704\xcd(\xfc'
 
-
 @app.route("/", methods = ["POST", "GET"])
 def root():
 	form = request.form
@@ -23,8 +22,7 @@ def root():
 		session.pop("username")
 		return render_template('main.html', title = "Login", message = "You have been logged out!", flag = "logout")
 	if ("username" in session):
-		print session
-		return render_template('main.html', title = "Landing", message = "Welcome, " + session["username"], flag = "login")
+		return render_template('main.html', title = "Landing", message = "Welcome, " + session["username"] + "!", flag = "login")
 	return render_template('main.html', title = "Login", message = "Enter your username and password:", flag = "logout")
 
 @app.route("/registration/", methods=["POST", "GET"])
@@ -38,7 +36,7 @@ def regauth():
 	password = hashlib.sha256(form['password']).hexdigest()
 	with open('data/accounts.csv', 'rb') as f:
 		reader = csv.reader(f)
-		if os.path.getsize('data/accounts.csv') > 0:
+		if os.path.getsize('data/accounts.csv') >= 130:
 			for row in reader:
 				if (user == row[0] or form['user'] == "" or form['password'] == ""):
 					return render_template('register.html', message = 'Cannot register that username and password!' , title = 'Register')
